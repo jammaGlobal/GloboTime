@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>This application will allow you to select a region/country and determine what the current time is there according to their specific timezone.</p>
+</div>
+
+<form action ="/countryTime" form method="get">
+    <label for="region">Enter Region/Country:</label>
+    <input type="text" id="region" name="region"><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<div class="text-center">
+    <span class="text-muted">Current Time in "@Region.RegionName": @Region.CurrentDateTime </span>
+</div>
