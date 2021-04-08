@@ -2,19 +2,31 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var regionName = RouteData.Values[""];
 }
+
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>This application will allow you to select a region/country and determine what the current time is there according to their specific timezone.</p>
+    <p>
+        This application will allow you to select a region/country and determine what the current time is there according to their specific timezone.<br>
+        All timezone offsets are taken from this website: https://www.countries-ofthe-world.com/world-time-zones.html
+    </p>
 </div>
 
-<form action ="/countryTime" form method="get">
+<form method="post">
+    <input type="text" asp-for="Region.RegionName" placeholder="Region Name" />
+    <button type="submit">Submit</button>
+</form>
+
+<!--
+<form action="/countryTime" form method="get">
     <label for="region">Enter Region/Country:</label>
     <input type="text" id="region" name="region"><br><br>
     <input type="submit" value="Submit">
 </form>
+     -->
 
 <div class="text-center">
-    <span class="text-muted">Current Time in "@Region.RegionName": @Region.CurrentDateTime </span>
+    <span class="text-muted">Current Time in @Model.CurrentRegionName  : @Model.CurrentTime </span>
 </div>

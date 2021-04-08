@@ -1,0 +1,57 @@
+[
+  {
+  	"name": "afghanistan",
+  	"offset": [4,30,0],
+  	"offsetType": "positive"
+  },
+  {
+  	"name": "aland islands",
+  	"offset": [2,0,0],
+  	"offsetType": "positive"
+  },
+  {
+  	"name": "albania",
+  	"offset": [1,0,0],
+  	"offsetType": "positive"
+  },
+  {
+  	"name": "algeria",
+  	"offset": [1,0,0],
+  	"offsetType": "positive"
+  },
+  {
+  	"name": "american samoa",
+  	"offset": [11,0,0],
+  	"offsetType": "negative"
+  },
+  {
+  	"name": "andorra",
+  	"offset": [1,0,0],
+  	"offsetType": "positive"
+  },
+  {
+  	"name": "angola",
+  	"offset": [1,0,0],
+  	"offsetType": "positive"
+  },
+  {
+  	"name": "anguilla",
+  	"offset": [4,0,0],
+  	"offsetType": "negative"
+  },
+  {
+  	"name": "antigua and barbuda",
+  	"offset": [4,0,0],
+  	"offsetType": "negative"
+  },
+  {
+  	"name": "argentina",
+  	"offset": [3,0,0],
+  	"offsetType": "negative"
+  },
+  {
+  	"name": "armenia",
+  	"offset": [4,0,0],
+  	"offsetType": "positive"
+  }
+]

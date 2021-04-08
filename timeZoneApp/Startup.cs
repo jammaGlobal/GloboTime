@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using timeZoneApp.Data;
 
 namespace timeZoneApp
 {
@@ -27,6 +28,15 @@ namespace timeZoneApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddServerSideBlazor();
+            services.AddHttpClient();
+            services.AddControllers();
+            services.AddTransient<Services.RegionsService>();
+
+            services.AddDbContext<TimeZoneAppContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("TimeZoneAppContext")));
+
+            services.AddDatabaseDeveloperPageExceptionFilter();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,16 +65,16 @@ namespace timeZoneApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapGet("/countryTime", async context =>
+               /* endpoints.MapGet("/countryTime", async context =>
                 {
                     String countryName = context.Request.Query["region"].ToString();
-                    Region.getTime(countryName);
+                    //Region.getTime(countryName);
                     context.Response.Redirect("/");
 
                     
 
 
-                });
+                });*/
 
                 //render a razor page with time and country
             });
