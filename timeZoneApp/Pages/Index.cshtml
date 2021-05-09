@@ -27,6 +27,10 @@
 </form>
      -->
 
-<div class="text-center">
-    <span class="text-muted">Current Time in @Model.CurrentRegionName  : @Model.CurrentTime </span>
-</div>
+@if (Model.CurrentRegionName != null)
+{
+    <div class="text-center">
+        <span class="text-muted">Current Time in "@Model.CurrentRegionName " : @Model.CurrentTime </span>
+    </div>
+}
+

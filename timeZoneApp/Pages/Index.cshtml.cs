@@ -55,14 +55,25 @@ namespace timeZoneApp.Pages
 
             String searchString = Region.RegionName;
 
-            var a = _context.Set<Region>().FromSqlInterpolated($"dbo.GetRegionName @SearchString = {searchString}");
-            var b = a.AsEnumerable<Region>().First();
+            var queryResult = _context.Set<Region>().FromSqlInterpolated($"dbo.GetRegionName @SearchString = {searchString}");
+            Region = queryResult.AsEnumerable<Region>().First();
 
-            Region = b;
+            CurrentRegionName = Region.RegionName;
 
-            CurrentRegionName = b.RegionName;
-            var c = b.offset;
-            CurrentTime = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Add(c);
+            if (Region.offsetType.Equals("positive"))
+            {
+                CurrentTime = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Add(Region.offset);
+            }
+            else if (Region.offsetType.Equals("negative"))
+            {
+                CurrentTime = TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Subtract(Region.offset);
+            }
+            else
+            {
+                //error
+            }
+
+            
 
             //TimeZoneInfo.ConvertTimeToUtc(DateTime.Now).Add(listOfOffsets[region.ToLower()]);
 
